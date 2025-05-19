@@ -1,171 +1,191 @@
-# **IMDb's Top 1000 Movies EDA**
+IMDb Top 1000 Movies: Exploratory Data Analysis
 
-### **Links to dashboards:**
-- [PowerBI](https://drive.google.com/file/d/1syroGq6LTWBoNKg6IzsU71Vxejp4n8et/view?usp=drive_link)
-- [Tableau](https://public.tableau.com/app/profile/brianwei/viz/IMDbMoviesDashboard_17072657280140/Overview)
+Interactive Dashboards
 
-## **Introduction**
-The world of cinema has always captivated audiences with its diverse range of stories, characters, and experiences. From timeless classics to modern masterpieces, movies have the power to evoke emotions, spark conversations, and leave a lasting impact on viewers. This data analysis project embarks on a journey through IMDb's top-rated movies in an effort to delve deeper into the realm of cinema and explore the factors that contribute to a movie's success and acclaim. 
+PowerBI Dashboard
 
-## **Objective**
-The primary objective of this project is to uncover trends and insights within IMDb's curated list of top 1000-rated movies. By analyzing various attributes such as ratings, genres, directors, actors, and financial performance, I expect to gain a better understanding of the factors that influence movie ratings, audience perceptions, and discover what sets apart the greatest movies of all time.
+Tableau Dashboard
 
-## **Tools Used**
-- R
-- PowerBI
-- Tableau
 
-## **The Data**
-The [dataset](https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows) used in this analysis was found on Kaggle after a user scrapped data from IMDb’s website. It consists of IMDb's top 1000 rated movies spanning from the year 1920 to 2020, providing a comprehensive view of film history. Each entry in the dataset encompasses key attributes essential for movie analysis, including movie title, release year, certificate (age rating), runtime, genre, IMDb rating, overview, Metascore, director, top four starring actors/actresses, and gross revenue.
+Overview
 
-## **Data Cleaning & Preparation**
-Before starting my analysis, I knew it was important to ensure that the dataset was clean and uniform. Each step of the data cleaning and preparation process aimed to eliminate inconsistencies and ready the data for analysis.
-1. **Remove Duplicates**
-   - Getting the distinct entries of the dataset. However, none were found.
-2. **Drop Unnecessary Columns**
-   - The "Poster link" column, containing URLs linking to movie posters, was unnecessary for the analysis.
-3. **Clean “Released_Year” Column**
-   - The data type of the "Released_Year" column was converted from character (chr) to integer (int).
-4. **Clean “Runtime” Column**
-   - The "Runtime" column was processed to remove the "min" suffix and converted to integer format.
-5. **Clean “Gross” (Revenue) Column**
-   - Commas were removed and the data was converted to integer format.
-6. **Normalize “Certificate” Column**
-   - A comprehensive normalization process was undertaken for the "Certificate" column. Originating from the Indian Central Board of Film Certification (CBFC), the ratings were mapped to their American Motion Picture Association (MPA) equivalents for consistency and alignment. Notable conversions included:
-     - "16" ratings were mapped to "PG-13" equivalents, with "A Silent Voice" from Japan being the only film affected.
-     - "Approved" and "Passed" ratings were labeled as "Unrated" to account for movies predating the MPA system.
-     - "GP" ratings, utilized from 1970-1972, were replaced with "PG" equivalents for consistency.
-     - "G" ratings, lacking an equivalent in the CBFC system, were converted to "PG" for alignment with the MPA system.
-     - Ratings such as "TV-PG," "TV-14," and "TV-MA" were retained as they aligned with their respective film equivalents.
+Cinema has long enchanted audiences with its ability to tell compelling stories, portray powerful emotions, and reflect the human experience. From black-and-white classics to modern blockbusters, movies continue to leave a deep cultural and emotional imprint. This project explores IMDb’s top 1000 highest-rated films, aiming to identify trends, uncover insights, and better understand what defines a critically acclaimed movie.
 
-These data cleaning and normalization procedures ensure a standardized and cohesive dataset, allowing accurate analysis to now be conducted. 
+Purpose
 
-## **Exploratory Data Analysis**
-In this section, I hope to conduct a deeper examination of the IMDb dataset in an attempt to better understand the dynamics of top-rated movies spanning from 1920 to 2020. Through a systematic exploration of temporal trends, genre prevalence, directorial prowess, actor prominence, and additional analysis of ratings and revenue, I hope to unveil the underlying factors influencing movie ratings and success.
+The goal of this analysis is to examine IMDb’s list of top 1000 films to identify patterns across multiple aspects—ratings, genres, directors, actors, and financial performance. Through this deep dive, I aim to better understand what factors influence a movie’s success and longevity in public memory.
 
-### **Temporal Analysis**
-First, I wanted to take a look at the temporal dimension of IMDb’s top-rated movies and get a better picture of trends and patterns across the past century.
+Technologies & Tools
 
-**How has the average IMDb rating of the top 1000 movies changed over the decades?**
+R
 
-<img src = "images/avg_rating_over_decades.png" width = "700">
+PowerBI
 
-The average IMDb rating of the top 1000 movies peaked in 1930 and has steadily declined in the subsequent decades. This trend may be due to various factors, including changes in audience preferences and evolving cinematic standards. Additionally, the disparity in the number of movies represented in the earlier decades compared to the later ones could also contribute to this trend. 
+Tableau
 
 
-**Are there certain decades that are more represented?**
+Data Source
 
-<img src = "images/representation_decade.png" width = "700">
+IMDb Top 1000 Movies: Exploratory Data Analysis
 
-This graph suggests a notable trend where the representation of movies in the top 1000 varies significantly across different decades. The substantial increase in the number of movies from the past two decades compared to earlier ones implies a shift in the composition of top-rated movies over time. This pattern supports the hypothesis presented in the last question, in which more movies could be lowering the overall average of that decade.
+Interactive Dashboards
 
+PowerBI Dashboard
 
-**How has the average runtime changed over the years?**
+Tableau Dashboard
 
-<img src = "images/distribution_runtimes.png" width = "700">
 
-Since the 1960s, the average runtime has consistently hovered around the 2-hour mark, suggesting a preference for movies of moderate duration. However, there appears to be a slight uptick in average runtime in more recent years, indicating a potential shift in audience preferences or filmmaking trends towards longer movies.
+Overview
 
+Cinema has long enchanted audiencethe years 1920 through 2020. Each entry provides a wide range of attributes including title, release year, age certificate, runtime, genres, IMDb rating, plot summary, Metascore, director, main cast, and gross earnings.
 
-### **Genre Analysis**
-After getting a better idea of how movies have changed over time, I shifted my focus to explore the diverse genres represented in IMDb's top-rated movies, hoping to uncover the most prevalent genres and any correlations between genre and other factors such as IMDb rating or the age rating the movie received.
+Data Cleaning & Preparation
 
-**Which genres are most common among top-rated movies?**
+Before analysis, data cleaning was crucial to ensure consistency and usability. Key steps included:
 
-<img src = "images/distribution_genres.png" width = "700">
+1. Duplicate Removal
 
-This analysis sheds light on the prevailing genres among IMDb's top-rated movies, with drama emerging as the most common genre, followed by comedy, adventure, crime, and action.
+Checked for duplicates; none were found.
 
 
-**What is the average rating for each genre?**
 
-<img src = "images/top_genres.png" width = "700">
+2. Removing Irrelevant Columns
 
-War, western, and film-noir top the list with ratings of 8.01, 8.00, and 7.99, respectively. Conversely, horror, comedy, and thriller genres exhibit lower average ratings, with scores of 7.89, 7.90, and 7.91, respectively. 
+The "Poster Link" column was removed as it was not useful for the analysis.
 
 
-**Is there any correlation between a movie’s genre and the age rating it receives?**
 
-<img src = "images/correlation_genre_age_rating.png" width = "700">
+3. Converting Release Year
 
-Dramas, which are among the most common genres, are more frequently rated as R, compared to PG or PG-13. Similarly, crime and thriller genres also tend to receive R ratings more often. In contrast, genres like adventure, animation, comedy, family, and romance are predominantly rated as PG. Meanwhile, the action genre is more commonly associated with a PG-13 rating.
+Transformed from text to integer format.
 
 
-### **Director Analysis**
-Next, my attention turned toward examining the directors in this dataset. I aimed to identify the directors with the most movies featured and explore any potential correlation between the number of movies a director has in the top 1000 movies and the average rating they attained.
 
-**Who are the top directors in terms of most movies in the top 1000?**
+4. Standardizing Runtime
 
-<img src = "images/top_directors.png" width = "700">
+Removed the “min” text and converted values to integers.
 
-The data reveals that Alfred Hitchcock leads the pack with 14 movies in IMDb's top 1000 list, closely followed by Steven Spielberg with 13. Hayao Miyazaki follows with 11 movies, while Akira Kurosawa and Martin Scorsese share the fourth position with 10 movies each. These directors have made significant contributions to the realm of cinema, earning them multiple spots among the top-rated movies on IMDb.
 
 
-**Is there a correlation between a director’s average movie rating and the number of movies they’ve directed in the list?**
+5. Cleaning Gross Revenue
 
-<img src = "images/correlation_director.png" width = "700">
+Removed commas and converted the values to integer format.
 
-The analysis does not reveal a strong correlation between a director's average movie rating and the number of movies they have directed in the top 1000 list. This observation is supported both visually, through the scatterplot, and quantitatively, by the correlation coefficient. It suggests that the number of movies a director has in the top 1000 list does not necessarily influence the average rating of their movies.
 
 
-### **Actor Analysis**
-Naturally, the spotlight shines on the stars of the movies next. Similar to the directors, I sought to find which actors appear in the most top-rated movies and whether or not the number of movies they star in has an impact on the rating they receive. 
+6. Standardizing Age Certification
 
-**Which actors appear most frequently in the top-rated movies?**
+Mapped Indian CBFC ratings to the U.S. MPA system for consistency:
 
-<img src = "images/top_actors.png" width = "700">
+CBFC’s “16” was mapped to PG-13 (only one film affected).
 
-Notable names such as Robert De Niro, Tom Hanks, and Al Pacino featured prominently, with De Niro leading the pack with an impressive 17 appearances. Other prolific actors including Brad Pitt, Clint Eastwood, Christian Bale, Leonardo DiCaprio, and Matt Damon also show up here, each appearing in at least 11 of the top-rated movies.
+Older ratings like “Approved” and “Passed” were grouped as “Unrated.”
 
+The outdated “GP” was updated to “PG.”
 
-**How does the number of movies each of the top 10 actors has starred in relate to the average rating of those movies?**
+“G” was matched with “PG” for standardization.
 
-<img src = "images/correlation_actor.png" width = "700">
+TV-based ratings like “TV-PG,” “TV-14,” and “TV-MA” were retained.
 
-Robert De Niro stood out as a prominent figure, featuring in a substantial number of top-rated movies while maintaining consistently high average ratings. On the other hand, actors like Denzel Washington demonstrated impressive involvement, albeit with slightly lower average ratings compared to those who starred in a higher number of top-rated movies. 
 
 
-### **Rating & Revenue Analysis**
-Next, I wanted to direct my analysis to the gross revenue data. More specifically, how much do most movies make, and whether or not movies make more if they earn a higher IMDb rating.
 
-**How much do most movies make?**
 
-<img src = "images/distribution_revenue.png" width = "700">
+With the data cleaned and standardized, meaningful exploration could now begin.
 
-This histogram reveals a notable pattern among IMDb's top-rated movies, with the majority of films earning under $50 million. However, only a small proportion of movies surpass the $250 million mark in revenue, indicating a concentration of blockbuster successes within the dataset.
 
+Exploratory Data Analysis
 
-**Is there a correlation between the IMDb rating and the money a movie earns?**
+Trends Over Time
+To start, I analyzed how top-rated films have evolved over time, particularly with regard to ratings, runtime, and representation.
 
-<img src = "images/correlation_rating_revenue.png" width = "700">
+How have average IMDb ratings changed over the decades?
 
-In exploring the correlation between IMDb rating and a movie's revenue, a weak relationship was found. Contrary to expectations, a higher IMDb rating did not consistently translate to higher box office earnings. This finding suggests that while critical acclaim may contribute to a film's success, other factors likely influence its financial performance as well. 
+<img src="images/avg_rating_over_decades.png" width="700">The average ratings peaked in the 1930s and have gradually declined over the decades. This may reflect shifting audience preferences or an increase in the number of films, which could dilute the average.
 
+Which decades contribute the most to the top 1000 list?
 
-### **Additional Analysis**
-Finally, I decided to ask some additional questions that I thought would be interesting to look at. 
+<img src="images/representation_decade.png" width="700">Recent decades, especially the 2000s and 2010s, are more heavily represented than earlier periods. This may partly explain the decline in average ratings, as more films from recent years increase competition and variability.
 
-**What age rating is most common?**
+How has runtime evolved over the years?
 
-<img src = "images/movies_age_rating.png" width = "700">
-<img src = "images/movies_age_rating_2.png" width = "700">
+<img src="images/distribution_runtimes.png" width="700">Since the 1960s, runtimes have remained close to 120 minutes, though there’s a slight upward trend in recent years, possibly reflecting a trend toward longer storytelling formats.
 
-The most common age rating among IMDb's top 1000 rated movies is R, followed by PG and PG-13. It's worth noting that the PG-13 rating wasn't established until 1984, which may have affected its total count compared to other ratings. A subsequent analysis focusing only on movies released after 1984 reaffirms R as the most prevalent age rating, followed by PG-13 and PG, respectively.
+Genre Analysis
 
+Genres reveal a lot about audience taste and critical reception.
 
-**What are some common themes or topics that show up in the top-rated movies?**
+Which genres are most common?
 
-<img src = "images/wordcloud.png" width = "350">
+<img src="images/distribution_genres.png" width="700">Drama dominates the list, followed by comedy, adventure, crime, and action. These genres appear to resonate most with both critics and audiences.
 
-The wordcloud of plot overviews reveals several common themes and topics. One prevalent theme is youth and coming-of-age, as indicated by words such as "young", "man", "life", "new", and "world". These words suggest a focus on characters navigating through new experiences and stages of life. Additionally, themes of relationships and personal journeys emerge, with words like "family", "story", "woman", "love", and "war" indicating a focus on interpersonal dynamics, personal narratives, and the complexities of human connections. Lastly, words like "find", "must", "becomes", and "help" suggests themes of struggle, transformation, and the pursuit of goals or resolutions amidst challenges.
+What are the average ratings by genre?
 
+<img src="images/top_genres.png" width="700">Genres such as war, western, and film-noir have the highest average ratings. In contrast, horror, comedy, and thriller films tend to have slightly lower average IMDb scores.
 
-## **Visualizations**
-To summarize my analysis and findings, I created dashboards in both PowerBI and Tableau with all key visualizations recreated in each respective environment. 
-- [PowerBI](https://drive.google.com/file/d/1syroGq6LTWBoNKg6IzsU71Vxejp4n8et/view?usp=drive_link)
-- [Tableau](https://public.tableau.com/app/profile/brianwei/viz/IMDbMoviesDashboard_17072657280140/Overview)
+Is there a link between genre and age certification?
 
-## **Conclusion**
-Through temporal analysis, I found shifting patterns in movie ratings and representation across different decades, shedding light on evolving cinematic trends over time. Analyzing the different genres revealed the dominance of drama, along with intriguing correlations between genre and age ratings. Director and actor analyses showcased the influential figures shaping the landscape of top-rated movies, while looking into ratings and revenue highlighted the nuanced relationship between critical acclaim and box office success.
+<img src="images/correlation_genre_age_rating.png" width="700">Dramas, thrillers, and crime films are more often rated R. Meanwhile, genres like adventure, comedy, and animation lean toward PG and PG-13, catering to broader audiences.
 
-As I navigated through the data, it became increasingly clear that IMDb ratings, while informative, only scratch the surface of a movie's significance. Beyond mere numbers, a film's impact can be defined by its storytelling prowess, artistic vision, and the simple joy of immersing oneself in a good movie. 
+Director Analysis
+
+Next, I looked into which directors had the strongest presence on the list and how their average ratings stacked up.
+
+Which directors are most frequently featured?
+
+<img src="images/top_directors.png" width="700">Alfred Hitchcock tops the list with 14 entries, followed closely by Steven Spielberg (13), Hayao Miyazaki (11), and both Akira Kurosawa and Martin Scorsese with 10 each.
+
+Is there a correlation between number of films and average rating per director?
+
+<img src="images/correlation_director.png" width="700">There’s no strong correlation here. Having more films in the top 1000 doesn’t necessarily mean a higher average rating, suggesting quality and quantity are not always aligned.
+
+Actor Analysis
+
+Now to the stars of the screen: which actors appear most frequently and how do their movies fare?
+
+Which actors appear the most?
+
+<img src="images/top_actors.png" width="700">Robert De Niro leads with 17 top-rated appearances. Others include Tom Hanks, Al Pacino, Brad Pitt, and Leonardo DiCaprio, all with double-digit appearances.
+
+Does acting in more top-rated films translate to higher average ratings?
+
+<img src="images/correlation_actor.png" width="700">Actors like De Niro manage both volume and quality, while others like Denzel Washington appear often but with slightly lower average ratings. Overall, there’s no clear pattern between quantity and rating.
+
+Revenue vs Rating Analysis
+
+Finally, I explored the financial side of top-rated films.
+
+What are typical earnings for these movies?
+
+<img src="images/distribution_revenue.png" width="700">Most films earn under $50 million, with a few blockbusters exceeding $250 million. The distribution is heavily skewed toward lower revenue brackets.
+
+Do higher IMDb ratings lead to more revenue?
+
+<img src="images/correlation_rating_revenue.png" width="700">The data shows only a weak correlation. A high rating doesn’t guarantee box office success—commercial appeal depends on many other factors.
+
+Other Insights
+
+Which age ratings are most common?
+
+<img src="images/movies_age_rating.png" width="700">  
+<img src="images/movies_age_rating_2.png" width="700">R-rated movies are the most prevalent overall, followed by PG and PG-13. Even after filtering to post-1984 (when PG-13 was introduced), R remains the most common.
+
+What themes are common in the top movies?
+
+<img src="images/wordcloud.png" width="350">The word cloud of plot overviews suggests common themes such as youth, life journeys, family, love, and transformation. Words like “young,” “story,” “world,” and “find” reflect both coming-of-age narratives and personal growth arcs.
+
+Summary Dashboards
+
+All key visualizations and insights are presented in interactive dashboards:
+
+PowerBI Dashboard
+
+Tableau Dashboard
+
+
+Conclusion
+
+This analysis offered a deeper look into the characteristics of top-rated movies over the past century. Temporal trends highlighted shifts in ratings and representation. Genre and age ratings showed distinct patterns, while director and actor data revealed who shaped cinema’s most celebrated works. Revenue analysis demonstrated that critical acclaim doesn’t always equal box office dominance.
+
+Ultimately, this project reveals that while IMDb ratings can signal quality, a movie’s legacy is shaped by storytelling, direction, emotion, and the human connections they spark. Numbers alone can’t capture the full magic of great cinema.
+
